@@ -1,0 +1,827 @@
+:root {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #0f8a63;
+  --primary-strong: #0a6f4f;
+  --primary-soft: #e8faf3;
+  --secondary: #2563eb;
+  --secondary-soft: #e8f0ff;
+  --accent: #d97706;
+  --accent-soft: #fff4d8;
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 30px rgba(15, 138, 99, 0.12);
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button, input {
+  font: inherit;
+}
+
+input {
+  min-width: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  width: min(100% - 24px, 760px);
+  margin: 0 auto;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary), #12a272);
+  color: white;
+  padding: 36px 0 90px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.hero-city {
+  margin: 6px 0 0;
+  opacity: 0.85;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.hero-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center; /* mantiene el centrado */
+}
+
+.hero-text {
+  text-align: left;
+}
+
+.pharma-icon {
+  font-size: 26px;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-subtitle {
+  margin: 12px 0 0;
+  opacity: 0.7;
+  font-size: 0.92rem;
+}
+
+.main-content {
+  margin-top: -52px;
+  padding-bottom: 40px;
+}
+
+.card, .validity-card, .view-all-button {
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.top-card {
+  padding: 18px;
+}
+
+.top-card-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.selected-date {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.turn-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 98px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.actions-grid {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.action-button:hover {
+  background: #f8fafc;
+}
+
+.action-button:active {
+  transform: scale(0.985);
+}
+
+.action-button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.action-button.primary:hover {
+  background: var(--primary-strong);
+}
+
+.action-button.outline {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.date-trigger {
+  flex: 1 1 220px;
+}
+
+.sr-only-date-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.location-banner {
+  padding: 14px;
+  margin-top: 14px;
+}
+
+.location-banner-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.location-banner-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.05rem;
+}
+
+.location-banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.location-banner-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.location-banner-message {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.location-banner-button {
+  flex-shrink: 0;
+}
+
+.validity-card {
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--primary-soft);
+  border-color: #d2f4e8;
+}
+
+.validity-static {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.validity-dynamic {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.section-block {
+  margin-top: 18px;
+}
+
+.section-title, .subsection-title {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.subsection-title {
+  padding-top: 8px;
+}
+
+.pharmacy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.pharmacy-card.highlight {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.pharmacy-card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pharmacy-name {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.pharmacy-card.highlight .pharmacy-name {
+  font-size: 1.4rem;
+}
+
+.pharmacy-address {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.turn-letter {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.badges-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.badge.closest {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge.distance {
+  background: var(--secondary-soft);
+  color: var(--secondary);
+}
+
+.badge.turn {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  min-height: 48px;
+  padding: 0 16px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform .15s ease, opacity .15s ease, background .15s ease;
+}
+
+.btn:active {
+  transform: scale(0.985);
+}
+
+.btn.call {
+  flex: 1 1 160px;
+  background: var(--primary);
+  color: white;
+}
+
+.btn.route {
+  flex: 1 1 160px;
+  background: var(--secondary);
+  color: white;
+}
+
+.btn.share {
+  width: 48px;
+  background: white;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn.disabled {
+  cursor: not-allowed;
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.empty-state {
+  margin-top: 18px;
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.empty-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.empty-text {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.view-all-button {
+  width: 100%;
+  margin-top: 18px;
+  min-height: 52px;
+  padding: 0 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 50;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.modal-panel {
+  width: min(100%, 860px);
+  height: 100%;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.modal-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.modal-close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.modal-body {
+  padding: 16px 16px 24px;
+  overflow: auto;
+}
+
+@media (min-width: 720px) {
+  .main-content {
+    margin-top: -60px;
+  }
+
+  .hero {
+    padding-bottom: 104px;
+  }
+
+  .actions-grid {
+    flex-wrap: nowrap;
+  }
+
+  .modal-panel {
+    height: min(92vh, 980px);
+    margin-top: 24px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.25);
+  }
+}
+
+
+/* ===== Iconos Lucide ===== */
+.lucide {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.1;
+  flex-shrink: 0;
+}
+
+.action-button .lucide,
+.btn .lucide,
+.view-all-button .lucide {
+  width: 18px;
+  height: 18px;
+}
+
+.location-banner-icon .lucide {
+  width: 20px;
+  height: 20px;
+}
+
+.pharmacy-address .lucide {
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+.badge .lucide {
+  width: 15px;
+  height: 15px;
+}
+
+.pharmacy-address {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+/* ===== Nivel wow visual ===== */
+.theme-toggle {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.main-feature-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px 0;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.main-feature-title .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22,163,74,0.16);
+}
+
+.pharmacy-card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp .38s ease forwards;
+}
+
+.pharmacy-card.highlight {
+  border: 2px solid var(--secondary);
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.16);
+  transform: translateY(0) scale(1.012);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.pharmacy-card.highlight .pharmacy-name {
+  font-size: 1.46rem;
+}
+
+.pharmacy-card.highlight .actions-row .btn {
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.pharmacy-card:hover {
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.btn,
+.action-button,
+.view-all-button,
+.modal-close {
+  transition: transform .15s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
+}
+
+.btn:hover,
+.action-button:hover,
+.view-all-button:hover,
+.modal-close:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active,
+.action-button:active,
+.view-all-button:active,
+.modal-close:active,
+.theme-toggle:active {
+  transform: scale(.97);
+}
+
+.location-banner,
+.validity-card,
+.top-card,
+.pharmacy-card,
+.modal-panel {
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Modo oscuro ===== */
+body.dark {
+  --bg: #07111f;
+  --surface: #0f1b2d;
+  --text: #e5edf8;
+  --muted: #9fb0c7;
+  --border: #20314a;
+  --primary: #54c59f;
+  --primary-strong: #45b28f;
+  --primary-soft: rgba(84, 197, 159, 0.12);
+  --secondary: #79aaff;
+  --secondary-soft: rgba(121, 170, 255, 0.14);
+  --accent: #f3c96b;
+  --accent-soft: rgba(243, 201, 107, 0.14);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.26);
+  --shadow-lg: 0 16px 34px rgba(0, 0, 0, 0.30);
+}
+
+body.dark .hero {
+  background: linear-gradient(135deg, #0d243f, #15355d);
+}
+
+body.dark .hero-subtitle,
+body.dark .hero-city {
+  opacity: 0.9;
+}
+
+body.dark .theme-toggle {
+  background: #14243a;
+  color: #e5edf8;
+  border-color: var(--border);
+}
+
+body.dark .action-button,
+body.dark .view-all-button,
+body.dark .modal-close {
+  background: #132238;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark .action-button:hover,
+body.dark .view-all-button:hover,
+body.dark .modal-close:hover {
+  background: #172a43;
+}
+
+body.dark .action-button.primary {
+  background: var(--primary);
+  color: #041019;
+  border-color: var(--primary);
+}
+
+body.dark .action-button.outline {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: transparent;
+}
+
+body.dark .validity-card {
+  background: rgba(84, 197, 159, 0.10);
+  border-color: rgba(84, 197, 159, 0.22);
+}
+
+body.dark .badge.turn {
+  background: #15263a;
+  color: #cdd9ea;
+}
+
+body.dark .btn.share {
+  background: #16273c;
+  color: #d6e0ee;
+  border-color: var(--border);
+}
+
+body.dark .btn.disabled {
+  background: #22344d;
+  color: #90a1b8;
+}
+
+body.dark .pharmacy-card.highlight {
+  background: linear-gradient(180deg, #12243b 0%, #102033 100%);
+  border-color: var(--secondary);
+  box-shadow: 0 16px 34px rgba(16, 32, 51, 0.55);
+}
+
+body.dark .turn-letter {
+  background: rgba(84, 197, 159, 0.12);
+  color: var(--primary);
+}
+
+body.dark .modal {
+  background: rgba(1, 6, 14, 0.72);
+}
+
+
+/* Footer */
+.app-footer {
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.footer-sub {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer-copy {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #25D366;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-whatsapp:hover {
+  opacity: 0.9;
+}

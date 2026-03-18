@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmacias de Turno - San Nicolás de los Arroyos</title>
+  <meta name="description" content="Encontrá rápido la farmacia de turno más cercana en San Nicolás de los Arroyos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="container">
+        <div class="hero-title">
+  <span class="pharma-icon">✚</span>
+  <div class="hero-text">
+    <h1>Farmacias de Turno</h1>
+    <p class="hero-city">San Nicolás de los Arroyos</p>
+    <p class="hero-subtitle">Encontrá rápido la farmacia de turno más cercana</p>
+  </div>
+</div>
+
+    </header>
+
+    <main class="container main-content">
+      <section class="card top-card">
+        <div class="top-card-row">
+          <button class="theme-toggle" id="toggleDarkButton" type="button" aria-label="Cambiar modo oscuro">🌙</button>
+          <div>
+            <p class="eyebrow" id="dateLabel">Hoy</p>
+            <p class="selected-date" id="selectedDateText">-</p>
+          </div>
+          <span class="turn-badge" id="turnBadge">Turno -</span>
+        </div>
+
+        <div class="actions-grid">
+          <button class="action-button date-trigger" id="openDateButton" type="button"><i data-lucide="calendar-days"></i>Otra fecha</button>
+          <input type="date" id="dateInput" class="sr-only-date-input" />
+          <button class="action-button primary hidden" id="todayButton" type="button">Hoy</button>
+          <button class="action-button outline hidden" id="retryLocationButton" type="button" title="Usar mi ubicación"><i data-lucide="locate-fixed"></i></button>
+        </div>
+      </section>
+
+      <section class="card location-banner hidden" id="locationBanner">
+        <div class="location-banner-content" id="locationBannerContent"></div>
+      </section>
+
+      <section class="validity-card" aria-label="Vigencia del turno">
+        <p class="validity-static">Las farmacias que están de turno lo están desde las 8:30 del día hasta las 08:30 del día siguiente.</p>
+        <p class="validity-dynamic" id="turnValidityText"></p>
+      </section>
+
+      <section id="turnSection" class="section-block">
+        <h2 class="section-title" id="turnSectionTitle">Farmacia de turno hoy</h2>
+        <div id="mainFeatureTitle"></div>
+        <div id="mainPharmacy"></div>
+        <div id="moreTurnPharmacies"></div>
+      </section>
+
+      <section class="card empty-state hidden" id="emptyState">
+        <p class="empty-title">No hay turno cargado</p>
+        <p class="empty-text">No encontramos información de turnos para esta fecha. Probá con otra fecha.</p>
+      </section>
+
+      <button class="view-all-button" id="viewAllButton"><i data-lucide="building-2"></i> Ver todas las farmacias</button>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="allPharmaciesModal" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2>Todas las farmacias</h2>
+          <p id="allPharmaciesSubtitle">0 farmacias en San Nicolás de los Arroyos</p>
+        </div>
+        <button class="modal-close" id="closeModalButton" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body" id="allPharmaciesList"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+<footer class="app-footer">
+  <div class="footer-content">
+
+    <p class="footer-main">
+      Desarrollado por <strong>Mauricio Coseres</strong>
+    </p>
+
+    <p class="footer-sub">
+      Proyecto creado para facilitar el acceso a farmacias de turno en San Nicolás de los Arroyos.
+    </p>
+
+    <a class="footer-whatsapp" href="https://wa.me/543364211738" target="_blank">
+      <i data-lucide="message-circle"></i> Contactar por WhatsApp
+    </a>
+
+    <p class="footer-copy">
+      © <span id="year"></span>
+    </p>
+
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body>
+</html>
