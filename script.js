@@ -292,11 +292,23 @@ function createPharmacyCard(farmacia, options = {}) {
     window.location.href = `tel:${farmacia.telefono}`;
   });
 
-  card.querySelector('[data-action="route"]')?.addEventListener("click", () => {
-    if (farmacia.mapsUrl) {
-      window.open(farmacia.mapsUrl, "_blank", "noopener");
-    }
-  });
+    card.querySelector('[data-action="route"]')?.addEventListener("click", () => {
+  const hasCoords =
+    typeof farmacia.latitud === "number" &&
+    typeof farmacia.longitud === "number" &&
+    !Number.isNaN(farmacia.latitud) &&
+    !Number.isNaN(farmacia.longitud);
+
+  if (hasCoords) {
+    const mapsDirectUrl = `https://www.google.com/maps/search/?api=1&query=${farmacia.latitud},${farmacia.longitud}`;
+    window.open(mapsDirectUrl, "_blank", "noopener");
+    return;
+  }
+
+  if (farmacia.mapsUrl) {
+    window.open(farmacia.mapsUrl, "_blank", "noopener");
+  }
+});
 
   card.querySelector('[data-action="share"]')?.addEventListener("click", async () => {
     await sharePharmacy(farmacia);
